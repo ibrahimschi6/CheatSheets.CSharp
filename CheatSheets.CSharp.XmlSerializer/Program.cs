@@ -17,10 +17,14 @@ namespace CheatSheets.CSharp.XmlSerializer
                 input.SubClasses.Add(new SampleSubClass { Id = 10 + i, Name = "Test" + i });
             }
 
+
             //CALL
             var testData = SerializeToString(input);
 
             Console.WriteLine(testData);
+
+            SerializeToFile(testData, @"c:\temp\ObjectToText.xml");
+
             Console.ReadKey();
         }
 
@@ -35,6 +39,11 @@ namespace CheatSheets.CSharp.XmlSerializer
 
                 return writer.ToString();
             }
+        }
+        public static void SerializeToFile(object obj, string fileFullPath){
+            var xmlWriter =  System.Xml.XmlWriter.Create(fileFullPath);
+
+            (new System.Xml.Serialization.XmlSerializer(obj.GetType())).Serialize(xmlWriter, obj);
         }
     }
         public class SampleClass
