@@ -23,6 +23,7 @@ namespace CheatSheets.CSharp.XmlSerializer
 
             Console.WriteLine(testData);
 
+            //(new System.Xml.Serialization.XmlSerializer(testData.GetType())).Serialize(new System.IO.StreamWriter(@"c:\temp\testData.xml"), testData)
             SerializeToFile(testData, @"c:\temp\ObjectToText.xml");
 
             Console.ReadKey();
